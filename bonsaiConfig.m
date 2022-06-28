@@ -15,16 +15,16 @@ function config = bonsaiConfig
 
         % Local endpoint for exported brain prediction API
         % BRAINURL = http://localhost:5000/v1/prediction
-        config.exportedBrainUrl = env('BRAINURL');
+        config.exportedBrainUrl = env('BRAINURL', 'http://localhost:5000/v1/prediction');
     catch ME
-        disp("Missing environment varibles. Copy template.env file to .env and add there.");
+        disp("Missing environment varibles. Copy template.env file to keys.env and add there.");
         disp("See the following link for details:");
         disp("https://docs.microsoft.com/en-us/bonsai/guides/run-a-local-sim?tabs=bash%2Ctest-with-ui&pivots=sim-lang-simulink#step-3-configure-the-bonsai-cli-and-your-environment")
         rethrow(ME)
     end
 
     % simulator name, for an unmanaged simulator launched from the desktop to show up on the web
-    config.name = "Simulink - Chemical Process";
+    config.name = "Simulink - CSTR";
 
     % set state and action schemas (overrides data from bonsaiBlock)
     config.stateSchema = ["Cr", "Tr", "Cref", "Tref", "Tc"];
